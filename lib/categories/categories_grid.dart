@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/categories/categories_item.dart';
+import 'package:flutter_application_1/drawer/home_drawer.dart';
 import 'package:flutter_application_1/models/categories_modle.dart';
 import 'package:flutter_application_1/widget/app_theme.dart';
 
 class CategoriesGrid extends StatelessWidget {
-  const CategoriesGrid({super.key});
-
+  CategoriesGrid({super.key, required this.onCategorySelected});
+  void Function(CategoryModel) onCategorySelected;
   @override
   Widget build(BuildContext context) {
     List<CategoryModel> categories = List.generate(
@@ -39,10 +40,18 @@ class CategoriesGrid extends StatelessWidget {
                 mainAxisSpacing: 24,
                 crossAxisSpacing: 24,
               ),
-              itemBuilder: (_, index) => CategoryItem(
-                index: index,
-                category: categories[index],
-              ),
+              itemBuilder: (_, index) {
+                CategoryModel Category = categories[index];
+                return GestureDetector(
+                  onTap: () {
+                    onCategorySelected(categories[index]);
+                  },
+                  child: CategoryItem(
+                    index: index,
+                    category: categories[index],
+                  ),
+                );
+              },
               itemCount: categories.length,
             ),
           ),
