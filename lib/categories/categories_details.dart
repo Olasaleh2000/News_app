@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/source.dart';
 import 'package:flutter_application_1/tabs/sources_tabs.dart';
 
+// ignore: must_be_immutable
 class CategoriesDetails extends StatefulWidget {
-  CategoriesDetails(this.categoryId);
+  CategoriesDetails(this.categoryId, {super.key});
   String categoryId;
 
   @override

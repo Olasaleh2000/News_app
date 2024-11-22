@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/categories/categories_item.dart';
-import 'package:flutter_application_1/drawer/home_drawer.dart';
 import 'package:flutter_application_1/models/categories_modle.dart';
 import 'package:flutter_application_1/widget/app_theme.dart';
 
+// ignore: must_be_immutable
 class CategoriesGrid extends StatelessWidget {
   CategoriesGrid({super.key, required this.onCategorySelected});
   void Function(CategoryModel) onCategorySelected;

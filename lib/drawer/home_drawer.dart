@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widget/app_theme.dart';
 
+// ignore: must_be_immutable
 class HomeDrawer extends StatelessWidget {
   HomeDrawer({
+    super.key,
     required this.onItemSelected,
   });
   void Function(DrawerItem) onItemSelected;

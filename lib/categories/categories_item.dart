@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/categories_modle.dart';
 
+// ignore: must_be_immutable
 class CategoryItem extends StatelessWidget {
   CategoryItem({
+    super.key,
     required this.category,
     required this.index,
   });
