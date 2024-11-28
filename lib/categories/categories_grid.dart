@@ -9,15 +9,44 @@ class CategoriesGrid extends StatelessWidget {
   void Function(CategoryModel) onCategorySelected;
   @override
   Widget build(BuildContext context) {
-    List<CategoryModel> categories = List.generate(
-      6,
-      (index) => CategoryModel(
-        id: '$index',
+    List<CategoryModel> categories = [
+      CategoryModel(
+        id: 'sports',
         name: 'sports',
         imageName: 'sports',
         color: AppTheme.red,
       ),
-    );
+      CategoryModel(
+        id: 'general',
+        name: 'Politics',
+        imageName: 'Politics',
+        color: AppTheme.blue,
+      ),
+      CategoryModel(
+        id: 'health',
+        name: 'health',
+        imageName: 'health',
+        color: AppTheme.pink,
+      ),
+      CategoryModel(
+        id: 'business',
+        name: 'bussines',
+        imageName: 'bussines',
+        color: AppTheme.brown,
+      ),
+      CategoryModel(
+        id: 'entertainment',
+        name: 'environment',
+        imageName: 'environment',
+        color: AppTheme.lightBlue,
+      ),
+      CategoryModel(
+        id: 'science',
+        name: 'science',
+        imageName: 'science',
+        color: AppTheme.yellow,
+      ),
+    ];
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
