@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/news_response/article.dart';
 import 'package:flutter_application_1/widget/app_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NewsDetailsPage extends StatelessWidget {
@@ -10,13 +11,15 @@ class NewsDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations appLocalizations = AppLocalizations.of(context)!;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: AppTheme.primary,
         elevation: 0,
         title: Text(
-          news.title ?? "Title not available",
+          news.title ?? appLocalizations.titleNotAvailable,
           style: const TextStyle(fontSize: 18, color: Colors.white),
         ),
         iconTheme: const IconThemeData(color: Colors.white),
@@ -53,20 +56,21 @@ class NewsDetailsPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      news.source?.name ?? "Unknown source",
+                      news.source?.name ?? appLocalizations.unknownSource,
                       style: const TextStyle(
                           color: AppTheme.lightBlack, fontSize: 12),
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      news.title ?? "Title not available",
+                      news.title ?? appLocalizations.titleNotAvailable,
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             color: AppTheme.lightBlack,
                           ),
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      news.description ?? "Description not available.",
+                      news.description ??
+                          appLocalizations.descriptionNotAvailable,
                       style: const TextStyle(
                         fontSize: 14,
                         height: 1.5,
@@ -82,8 +86,9 @@ class NewsDetailsPage extends StatelessWidget {
                             callLaunchUrl(Uri.parse(news.url!));
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text("Article link not available."),
+                              SnackBar(
+                                content: Text(
+                                    appLocalizations.articleLinkNotAvailable),
                               ),
                             );
                           }
@@ -93,16 +98,16 @@ class NewsDetailsPage extends StatelessWidget {
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
-                          children: const [
+                          children: [
                             Text(
-                              "View full article",
-                              style: TextStyle(
+                              appLocalizations.viewFullArticle,
+                              style: const TextStyle(
                                 color: AppTheme.black,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(width: 4),
-                            Icon(
+                            const SizedBox(width: 4),
+                            const Icon(
                               Icons.arrow_forward_ios_sharp,
                               size: 18,
                               color: AppTheme.black,

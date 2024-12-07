@@ -1,0 +1,29 @@
+{
+    "sports": "الرياضة",
+    "politics": "سياسة",
+    "health": "الصحة",
+    "business": "الأعمال",
+    "entertainment": "الترفيه",
+    "science": "العلوم",
+    
+    "pickCategory": "اختر الفئة التي تهمك",
+    "newsApp": "تطبيق الأخبار!",
+    "categories": "الفئات",
+    "settings": "الإعدادات",
+    "noMoreNewsAvailable": "لا توجد أخبار إضافية",
+    "viewFullArticle": "عرض المقالة كاملة",
+    "unknownSource": "مصدر غير معروف",
+    "titleNotAvailable": "العنوان غير متوفر",
+    "descriptionNotAvailable": "الوصف غير متوفر",
+     "language": "اللغة",
+  "chooseLanguage": "اختر لغتك",
+    "articleLinkNotAvailable": "رابط المقالة غير متوفر",
+    "noTitle": "لا يوجد عنوان",
+    "noDescription": "لا يوجد وصف",
+    "enterSearchText": "أدخل نص البحث عن الأخبار",
+    "errorFetchingData": "حدث خطأ أثناء جلب البيانات",
+    "noSuggestions": "لا توجد اقتراحات مطابقة",
+    "noResults": "لا توجد نتائج مطابقة"
+    
+  }
+  

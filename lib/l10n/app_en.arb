@@ -1,0 +1,28 @@
+{
+    "sports": "Sports",
+    "politics": "Politics",
+    "health": "Health",
+    "business": "Business",
+    "entertainment": "Entertainment",
+    "science": "Science",
+    "pickCategory": "Pick your category of interest",
+    "newsApp": "News App!",
+  "categories": "Categories",
+  "settings": "Settings",
+  "noMoreNewsAvailable": "No more news available",
+  "viewFullArticle": "View Full Article",
+  "unknownSource": "Unknown Source",
+  "titleNotAvailable": "Title not available",
+  "descriptionNotAvailable": "Description not available",
+  "articleLinkNotAvailable": "Article link not available",
+ "language": "Language",
+  "chooseLanguage": "Choose your language",
+  "noTitle": "No title",
+  "noDescription": "No description",
+  "enterSearchText": "Enter text to search for news",
+  "errorFetchingData": "An error occurred while fetching data",
+  "noSuggestions": "No matching suggestions",
+  "noResults": "No matching results"
+
+  }
+  

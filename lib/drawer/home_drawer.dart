@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widget/app_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // ignore: must_be_immutable
 class HomeDrawer extends StatelessWidget {
@@ -7,10 +8,12 @@ class HomeDrawer extends StatelessWidget {
     super.key,
     required this.onItemSelected,
   });
-  void Function(DrawerItem) onItemSelected;
+  final void Function(DrawerItem) onItemSelected;
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations appLocalizations = AppLocalizations.of(context)!;
+
     final screenSize = MediaQuery.of(context).size;
 
     return SizedBox(
@@ -23,7 +26,7 @@ class HomeDrawer extends StatelessWidget {
             color: AppTheme.primary,
             alignment: Alignment.center,
             child: Text(
-              'News App!',
+              appLocalizations.newsApp,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -32,7 +35,7 @@ class HomeDrawer extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsetsDirectional.only(top: 12, start: 12),
+              padding: const EdgeInsetsDirectional.only(top: 12, start: 12),
               color: Colors.white,
               child: Column(
                 children: [
@@ -40,10 +43,10 @@ class HomeDrawer extends StatelessWidget {
                     onTap: () => onItemSelected(DrawerItem.categories),
                     child: Row(
                       children: [
-                        Icon(Icons.menu),
-                        SizedBox(width: 8),
+                        const Icon(Icons.menu),
+                        const SizedBox(width: 8),
                         Text(
-                          'Categories',
+                          appLocalizations.categories,
                           style:
                               Theme.of(context).textTheme.titleLarge?.copyWith(
                                     color: AppTheme.black,
@@ -52,19 +55,17 @@ class HomeDrawer extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   GestureDetector(
                     onTap: () => onItemSelected(DrawerItem.settings),
                     child: Row(
                       children: [
-                        Icon(
-                          Icons.settings,
-                        ),
-                        SizedBox(width: 8),
+                        const Icon(Icons.settings),
+                        const SizedBox(width: 8),
                         Text(
-                          'Settings',
+                          appLocalizations.settings, // "Settings" مترجم
                           style:
                               Theme.of(context).textTheme.titleLarge?.copyWith(
                                     color: AppTheme.black,
