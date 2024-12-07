@@ -4,6 +4,7 @@ import 'package:flutter_application_1/news/news_details.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_application_1/widget/app_theme.dart';
 import 'package:flutter_application_1/widget/loading_indicator.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class NewsItem extends StatelessWidget {
@@ -13,6 +14,8 @@ class NewsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations appLocalizations = AppLocalizations.of(context)!;
+
     final TextStyle? titleSmallStyle = Theme.of(context).textTheme.titleSmall;
 
     return GestureDetector(
@@ -37,23 +40,23 @@ class NewsItem extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 0.25,
                 width: double.infinity,
                 fit: BoxFit.fill,
-                placeholder: (_, __) => LoadingIndicator(),
+                placeholder: (_, __) => const LoadingIndicator(),
                 errorWidget: (_, __, ___) =>
-                    Icon(Icons.image_not_supported_outlined),
+                    const Icon(Icons.image_not_supported_outlined),
               ),
             ),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Text(
-              news.source?.name ?? '',
+              news.source?.name ?? appLocalizations.unknownSource,
               style:
                   titleSmallStyle?.copyWith(color: AppTheme.gray, fontSize: 10),
             ),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Text(
-              news.title ?? '',
+              news.title ?? appLocalizations.titleNotAvailable,
               style: titleSmallStyle?.copyWith(fontWeight: FontWeight.w500),
             ),
-            SizedBox(height: 2),
+            const SizedBox(height: 2),
             Align(
               alignment: AlignmentDirectional.topEnd,
               child: Text(

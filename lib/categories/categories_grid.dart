@@ -2,47 +2,51 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/categories/categories_item.dart';
 import 'package:flutter_application_1/models/categories_modle.dart';
 import 'package:flutter_application_1/widget/app_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // ignore: must_be_immutable
 class CategoriesGrid extends StatelessWidget {
   CategoriesGrid({super.key, required this.onCategorySelected});
-  void Function(CategoryModel) onCategorySelected;
+  final void Function(CategoryModel) onCategorySelected;
+
   @override
   Widget build(BuildContext context) {
+    AppLocalizations appLocalizations = AppLocalizations.of(context)!;
+
     List<CategoryModel> categories = [
       CategoryModel(
         id: 'sports',
-        name: 'sports',
+        name: appLocalizations.sports,
         imageName: 'sports',
         color: AppTheme.red,
       ),
       CategoryModel(
         id: 'general',
-        name: 'Politics',
+        name: appLocalizations.politics,
         imageName: 'Politics',
         color: AppTheme.blue,
       ),
       CategoryModel(
         id: 'health',
-        name: 'health',
+        name: appLocalizations.health,
         imageName: 'health',
         color: AppTheme.pink,
       ),
       CategoryModel(
         id: 'business',
-        name: 'bussines',
+        name: appLocalizations.business,
         imageName: 'bussines',
         color: AppTheme.brown,
       ),
       CategoryModel(
         id: 'entertainment',
-        name: 'environment',
+        name: appLocalizations.entertainment,
         imageName: 'environment',
         color: AppTheme.lightBlue,
       ),
       CategoryModel(
         id: 'science',
-        name: 'science',
+        name: appLocalizations.science,
         imageName: 'science',
         color: AppTheme.yellow,
       ),
@@ -56,7 +60,7 @@ class CategoriesGrid extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 24),
             child: Text(
-              'Pick your category of interest',
+              appLocalizations.pickCategory,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     color: AppTheme.lightBlack,
                   ),
@@ -70,7 +74,7 @@ class CategoriesGrid extends StatelessWidget {
                 crossAxisSpacing: 24,
               ),
               itemBuilder: (_, index) {
-                CategoryModel Category = categories[index];
+                CategoryModel category = categories[index];
                 return GestureDetector(
                   onTap: () {
                     onCategorySelected(categories[index]);

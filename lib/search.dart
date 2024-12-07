@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/api/api_service.dart';
 import 'package:flutter_application_1/news/news_details.dart';
 import 'package:flutter_application_1/widget/app_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'models/news_response/news_response.dart';
 
 class NewsSearchDelegate extends SearchDelegate {
@@ -51,16 +52,22 @@ class NewsSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
+    final appLocalizations =
+        AppLocalizations.of(context)!; // الوصول إلى الترجمة
+
     return FutureBuilder(
       future: ApiService.searchNews(query, page: 1),
       builder: (context, AsyncSnapshot<NewsResponse> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
-          return const Center(
-              child: Text('An error occurred while fetching data'));
+          return Center(
+            child: Text(appLocalizations.errorFetchingData), // النص المترجم
+          );
         } else if (!snapshot.hasData || snapshot.data!.news!.isEmpty) {
-          return const Center(child: Text('No matching results'));
+          return Center(
+            child: Text(appLocalizations.noResults), // النص المترجم
+          );
         }
 
         final articles = snapshot.data!.news;
@@ -70,8 +77,10 @@ class NewsSearchDelegate extends SearchDelegate {
           itemBuilder: (context, index) {
             final article = articles?[index];
             return ListTile(
-              title: Text(article?.title ?? 'No title'),
-              subtitle: Text(article?.description ?? 'No description'),
+              title: Text(
+                  article?.title ?? appLocalizations.noTitle), // النص المترجم
+              subtitle: Text(article?.description ??
+                  appLocalizations.noDescription), // النص المترجم
               onTap: () {
                 if (article != null) {
                   Navigator.push(
@@ -91,10 +100,13 @@ class NewsSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
+    final appLocalizations =
+        AppLocalizations.of(context)!; // الوصول إلى الترجمة
+
     if (query.isEmpty) {
       return Center(
         child: Text(
-          'Enter text to search for news',
+          appLocalizations.enterSearchText, // النص المترجم
           style: TextStyle(color: AppTheme.gray),
         ),
       );
@@ -106,10 +118,13 @@ class NewsSearchDelegate extends SearchDelegate {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
-          return const Center(
-              child: Text('An error occurred while fetching data'));
+          return Center(
+            child: Text(appLocalizations.errorFetchingData), // النص المترجم
+          );
         } else if (!snapshot.hasData || snapshot.data!.news!.isEmpty) {
-          return const Center(child: Text('No matching suggestions'));
+          return Center(
+            child: Text(appLocalizations.noSuggestions), // النص المترجم
+          );
         }
 
         final articles = snapshot.data!.news;
@@ -127,8 +142,10 @@ class NewsSearchDelegate extends SearchDelegate {
                       fit: BoxFit.cover,
                     )
                   : const Icon(Icons.image_not_supported, size: 60),
-              title: Text(article?.title ?? 'No title'),
-              subtitle: Text(article?.description ?? 'No description'),
+              title: Text(
+                  article?.title ?? appLocalizations.noTitle), // النص المترجم
+              subtitle: Text(article?.description ??
+                  appLocalizations.noDescription), // النص المترجم
               onTap: () {
                 if (article != null) {
                   Navigator.push(
